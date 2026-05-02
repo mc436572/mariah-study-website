@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>错题本 - Problem 11</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn-lang {
+            background: #3498db;
+            color: white;
+        }
+        .btn-answer {
+            background: #e74c3c;
+            color: white;
+        }
+        .question {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+        }
+        .answer {
+            display: none;
+            margin: 20px 0;
+            padding: 15px;
+            background: #e8f4f8;
+            border-left: 4px solid #2ecc71;
+        }
+        .answer.show {
+            display: block;
+        }
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .image-container img {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .chinese {
+            display: none;
+        }
+        .current-lang {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>错题本</h1>
+        
+        <div class="controls">
+            <button class="btn-lang" onclick="toggleLanguage()">切换语言 (中文/English)</button>
+            <button class="btn-answer" onclick="toggleAnswer()">显示/隐藏答案</button>
+        </div>
+        
+        <div class="question">
+            <h3>题目</h3>
+            <p class="english" id="question-en">
+                <strong>Problem 11:</strong> What is the probability that the second die shows a 6, given that two dice are rolled twice, but only the second die is considered for the second roll?
+            </p>
+            <p class="chinese" id="question-cn">
+                <strong>题目 11:</strong> 连续掷两次骰子，仅第二次掷出6点的概率是多少？
+            </p>
+        </div>
+        
+        <div class="image-container">
+            <img src="images/problem-11.jpg" alt="题目图片" width="400">
+        </div>
+        
+        <div class="answer" id="answer-box">
+            <h3>答案</h3>
+            <p class="english" id="answer-en">
+                <strong>Answer:</strong> The probability is 5/36.
+            </p>
+            <p class="chinese" id="answer-cn">
+                <strong>答案:</strong> 5/36
+            </p>
+            <p class="english" id="explanation-en">
+                <em>Explanation:</em> Each die has 6 faces, so the probability of rolling a 6 on one die is 1/6. Since the dice are independent, the probability that only the second die shows a 6 (and the first does not) is (5/6) * (1/6) = 5/36.
+            </p>
+            <p class="chinese" id="explanation-cn">
+                <em>解析:</em> 每个骰子有6个面，掷出6点的概率是1/6。由于两次掷骰是独立的，仅第二次掷出6点的概率是(5/6) * (1/6) = 5/36。
+            </p>
+        </div>
+        
+        <div class="note">
+            <p><strong>使用说明：</strong></p>
+            <ul>
+                <li>点击"切换语言"按钮可以切换中文/英文显示</li>
+                <li>点击"显示/隐藏答案"按钮可以显示或隐藏答案</li>
+                <li>默认状态下，题目显示英文，答案隐藏</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        function toggleLanguage() {
+            const englishElements = document.querySelectorAll('.english');
+            const chineseElements = document.querySelectorAll('.chinese');
+            
+            englishElements.forEach(el => el.style.display = 'none');
+            chineseElements.forEach(el => el.style.display = 'block');
+            
+            // 如果已经是中文，则切换回英文
+            if (englishElements[0].style.display === 'none') {
+                englishElements.forEach(el => el.style.display = 'block');
+                chineseElements.forEach(el => el.style.display = 'none');
+            }
+        }
+        
+        function toggleAnswer() {
+            const answerBox = document.getElementById('answer-box');
+            answerBox.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
